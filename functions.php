@@ -7,8 +7,8 @@
  * @package  <Package>
  */
 
-require_once 'functions/func-admin.php';
-require_once 'functions/func-debug.php';
-require_once 'functions/func-menu.php';
-require_once 'functions/func-script.php';
-require_once 'functions/func-style.php';
+require_once 'functions/admin.php';
+require_once 'functions/debug.php';
+require_once 'functions/menu.php';
+require_once 'functions/script.php';
+require_once 'functions/style.php';

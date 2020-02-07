@@ -2,9 +2,9 @@
 /**
  * Menu functions
  *
- * @author   <Author>
+ * @author   Tinpix
  * @version  1.0.0
- * @package  <Package>
+ * @package  agencia-plug
  */
 
 /**
