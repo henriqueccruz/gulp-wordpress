@@ -19,6 +19,7 @@
 // --------------------------------------------------
 // partials
 
+@import "partials/fonts";
 @import "partials/base";
 @import "partials/icons";
 @import "partials/buttons";
@@ -27,10 +28,20 @@
 // --------------------------------------------------
 // layout
 
+@import "components/share";
+
+// --------------------------------------------------
+// layout
+
 @import "layout/footer";
 @import "layout/header";
 @import "layout/main";
 @import "layout/nav";
+@import "layout/general";
+
+// pages
+@import "layout/pages/front-page";
+@import "layout/pages/single";
 
 // --------------------------------------------------
 // components

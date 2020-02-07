@@ -1,0 +1,90 @@
+header {
+
+	padding: 25px 0;
+
+	h1 {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#blog-logo {
+
+		width: 100%;
+		height: 40px;
+
+		@include media-breakpoint-up(md) {
+			height: 60px;
+			width: 220px;
+			margin: 0 15px;
+		}
+	}
+
+	#searchform {
+		position: relative;
+		border: 1px solid $c-gallery;
+		border-radius: 16px;
+		height: 30px;
+		padding: 0 10px;
+		margin: 15px 0;
+
+		input {
+			width: calc(100% - 35px);
+		}
+
+		input,
+		button {
+			border: none;
+			background: none;
+		}
+
+		button {
+			position: absolute;
+			right: 10px;
+			top: 0px;
+	
+			svg {
+				width: 15px;
+    			height: 25px;
+				fill: $c-gray;
+			}
+		}
+
+		label {
+			position: absolute;
+			top: -400%;
+		}
+	}
+
+	.item-spacer {
+		@include media-breakpoint-up(md) {
+			line-height: 50px;
+		}
+	}
+
+	.lang-selector {
+		width: 60px;
+		text-align: center;
+		display: inline-block;
+		align-self: center;
+		margin-right: 20px;
+
+		a {
+			color: $c-cod-gray;
+
+			&.current-lang {
+				font-weight: 700;
+			}
+		}
+	}
+
+	#logo-dupont {
+		width: calc(100% - 95px);
+		margin-right: 10px;
+		display: inline-block;
+		height: 100%;
+
+		path {
+			fill: $c-crimson-red;
+		}
+	}
+}
