@@ -1,57 +1,6 @@
 // Article styles
 article {
 
-	.page-title {
-		font-size: 3rem;
-		line-height: 3.2rem;
-	}
-
-	&.format-video {
-		.post-thumbnail {
-			&::before {
-				content: '';
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				width: 25%;
-				height: 25%;
-				transform: translate(-50%, -50%);
-				background-image: url('../images/icons/play.svg');
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: contain;
-				transition: transform .2s .05s;
-			}
-		}
-
-		&:hover {
-			.post-thumbnail {
-				&::before {
-					transform: translate(-50%, -50%) scale(1.2);
-				}
-			}
-		}
-	}
-
-	blockquote {
-		padding: 20px 50px;
-		font-size: 2.4rem;
-		line-height: 3rem;
-		margin: 40px 0;
-		font-weight: 700;
-		border-left: 8px solid $c-crimson-red;
-		position: relative;
-
-		/*&::before {
-			content: '“';
-			position: absolute;
-			font-size: 18rem;
-			opacity: 0.08;
-			top: 60px;
-			left: 0px;
-		}*/
-	}
-
 }
 
 .hidden {
