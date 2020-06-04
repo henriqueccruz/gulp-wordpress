@@ -44,6 +44,7 @@ const concat = require('gulp-concat');
 
 // Styles
 const sass = require('gulp-sass');
+const scsslint = require('gulp-scss-lint');
 const cleancss = require('gulp-clean-css');
 
 // Images
@@ -53,11 +54,20 @@ var imagemin = require('gulp-imagemin');
 var svgmin = require('gulp-svgmin');
 
 /**
+ * Task for SCSS Lint
+ */
+var csslint = function (done) {
+	return src(paths.styles.input)
+			.pipe(scsslint());
+}
+
+/**
  * Task for styles.
  */
 var css = function (done) {
 	return src(paths.styles.input)
 			.pipe(sass().on('error', sass.logError))
+			.pipe(scsslint({ 'reporterOutputFormat': 'Checkstyle' }))
 			.pipe(autoprefixer({ cascade : false }))
 			.pipe(cleancss())
 			.pipe(rename({ suffix: '.min' }))
