@@ -11,7 +11,7 @@
  * Credit in admin footer
  */
 function gulp_wp_admin_footer() {
-	echo 'Desenvolvido para a <a href="http://okean.com.br/" target="_blank">Okean Embarcações</a> pela <a href="https://www.futurebrand.com/br" target="_blank">FutureBrand</a>';
+	echo 'Desenvolvido para a <a href="%CLIENTE%" target="_blank">%CLIENTE%</a> pela <a href="%AGÊNCIA%" target="_blank">%AGÊNCIA%</a>';
 }
 add_filter( 'admin_footer_text', 'gulp_wp_admin_footer' );
 
