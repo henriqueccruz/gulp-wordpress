@@ -1,10 +1,6 @@
 # Gulp + WordPress
 
-Version: 2.0.5
-
-## Author
-
-Jase Warner ( [https://jase.io](https://jase.io) )
+Version: 2.0.7
 
 ## Synopsis
 
@@ -43,6 +39,7 @@ The Gulp build features the following helpful packages:
 * [gulp-clean-css](https://github.com/scniro/gulp-clean-css)
 * [gulp-rename](https://github.com/hparra/gulp-rename)
 * [gulp-sass](https://github.com/dlmanning/gulp-sass)
+* [gulp-scss-lint](https://github.com/juanfran/gulp-scss-lint)
 * [gulp-uglify](https://github.com/terinjokes/gulp-uglify)
 
 There are also a selection of useful WordPress functions located in the `functions` directory, including the following:
@@ -59,3 +56,4 @@ There are also a selection of useful WordPress functions located in the `functio
 * [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
 * [Gulp.js](http://gulpjs.com/)
 * [SASS / SCSS](http://sass-lang.com/)
+* [Gulp/WP] (https://github.com/jasewarner/gulp-wordpress)
