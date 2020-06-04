@@ -2,9 +2,9 @@
 /**
  * Debugging tools
  *
- * @author   Tinpix
+ * @author   <Author>
  * @version  1.0.0
- * @package  agencia-plug
+ * @package  <Package>
  */
 
 /**

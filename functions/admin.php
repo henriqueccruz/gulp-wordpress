@@ -2,16 +2,16 @@
 /**
  * Admin functions
  *
- * @author   Tinpix
+ * @author   <Author>
  * @version  1.0.0
- * @package  agencia-plug
+ * @package  <Package>
  */
 
 /**
  * Credit in admin footer
  */
 function gulp_wp_admin_footer() {
-	echo 'Desenvolvido para a <a href="http://agenciaplug.com.br/" target="_blank">Agência Plug</a> pela <a href="https://tinpix.com/" target="_blank">Tinpix</a>';
+	echo 'Desenvolvido para a <a href="http://okean.com.br/" target="_blank">Okean Embarcações</a> pela <a href="https://www.futurebrand.com/br" target="_blank">FutureBrand</a>';
 }
 add_filter( 'admin_footer_text', 'gulp_wp_admin_footer' );
 

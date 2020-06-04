@@ -2,9 +2,9 @@
 /**
  * Comment removal and related functions
  *
- * @author   Tinpix
+ * @author   <Author>
  * @version  1.0.0
- * @package  agencia-plug
+ * @package  <Package>
  */
 
 function filter_media_comment_status( $open, $post_id ) {

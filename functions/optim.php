@@ -2,9 +2,9 @@
 /**
  * WP Leaning stuff
  *
- * @author   Tinpix
+ * @author   <Author>
  * @version  1.0.0
- * @package  agencia-plug
+ * @package  <Package>
  */
 
 // Remove emoji functionality from front-end

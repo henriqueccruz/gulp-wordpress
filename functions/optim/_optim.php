@@ -11,6 +11,6 @@ require_once 'comments-options.php';
 
 /* Front-end optimisations */
 require_once 'front-end/disable-emojis.php';
-require_once 'front-end/remove-tags.php';
+require_once 'front-end/remove-generator-tags.php';
 
 /* Back-end optimisations */
