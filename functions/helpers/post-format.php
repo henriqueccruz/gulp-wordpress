@@ -2,9 +2,9 @@
 /**
  * Post format functions and abstractions
  *
- * @author   <Author>
+ * @author   Tinpix Digital
  * @version  1.0.0
- * @package  <Package>
+ * @package  sinqia
  */
 
 class YouTubeLinkParser {
@@ -37,3 +37,24 @@ class YouTubeLinkParser {
 		return "<iframe width='560' height='315' src='{$embed_url}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
 	}
 }
+
+function custom_excerpt_length( $length ) {
+	return 26;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+$page_anchors = [];
+
+function tax_cat_active($output, $args) {
+    if (is_single()) {
+        global $post;
+        $terms = get_the_terms($post->ID, 'category');
+        if (!empty($terms)) {
+            foreach( $terms as $term )
+                if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
+                    $output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
+        }
+    }
+    return $output;
+}
+add_filter('wp_list_categories', 'tax_cat_active', 10, 2); 

@@ -11,8 +11,7 @@
  * Set a script handle prefix based on theme name.
  * Note that this should be the same as the `themePrefix` var set in your Gulpfile.js.
  */
-$theme_handle_prefix = 'okean';
-$theme_company_name = 'Okean Embarcações';
+$theme_handle_prefix = 'wp-gulp-boilerplate';
 
 /**
  * Define theme constants and everything generic

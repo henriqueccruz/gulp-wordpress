@@ -24,6 +24,9 @@ add_action( 'init', 'gulp_wp_register_menus' );
  */
 function add_lang_to_nav( $items, $args ) {
 
+	if(!function_exists('qtranxf_get_url_for_language'))
+		return $items;
+
     $items .= '<li class="lang-select">'.get_lang_menu().'</li>';
 	return $items;
 	

@@ -2,9 +2,10 @@
 /**
  * qTranslate-related functions
  *
- * @author   <Author>
+ * @author   Tinpix Digital
  * @version  1.0.0
- * @package  <Package>
+ * @package  sinqia
  */
 
-define('CURRENT_LANGUAGE', qtranxf_getLanguage());
+if(class_exists('QTX_Translator'))
+	define('CURRENT_LANGUAGE', qtranxf_getLanguage());

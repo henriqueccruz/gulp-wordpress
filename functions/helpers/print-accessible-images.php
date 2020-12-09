@@ -2,9 +2,9 @@
 /**
  * Prints accessible images with all tags available
  *
- * @author   <Author>
+ * @author   Tinpix Digital
  * @version  1.0.0
- * @package  <Package>
+ * @package  sinqia
  */
 
 function print_accessible_image($image, $attr = FALSE) {

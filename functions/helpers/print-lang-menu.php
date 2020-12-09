@@ -2,9 +2,9 @@
 /**
  * Prints language selection menu
  *
- * @author   <Author>
+ * @author   Tinpix Digital
  * @version  1.0.0
- * @package  <Package>
+ * @package  sinqia
  */
 
 function get_lang_menu() {
