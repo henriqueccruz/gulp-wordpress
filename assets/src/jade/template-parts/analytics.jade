@@ -1,0 +1,10 @@
+- if ( get_field( "analytics_tracking_id", "option" ) ):
+	// Global site tag (gtag.js) - Google Analytics
+	- wp_enqueue_script( 'async-analytics-js', "https://www.googletagmanager.com/gtag/js?id=" . get_field( "analytics_tracking_id", "option" ) , array (), null, true);
+	script.
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', "<?php echo get_field( 'analytics_tracking_id', 'option' ) ?>");
+- endif
