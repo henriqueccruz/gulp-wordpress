@@ -1,0 +1,52 @@
+-
+	/**
+	* Header block
+	*
+	* @author   Tinpix Digital
+	* @version  1.0.0
+	* @package  pinguim
+	*/
+
+doctype html
+| <html <?php language_attributes() ?>>
+head
+	meta(charset!='<?php bloginfo("charset"); ?>')
+	meta(http-equiv="X-UA-Compatible", content='IE=edge,chrome=1')
+	title
+		- wp_title( '&ndash;', true, 'right' )
+	meta(name='viewport', content='width=device-width, height=device-height, initial-scale=1.0')
+	link(rel='pingback', href!='<?php bloginfo( "pingback_url" ); ?>')
+	- wp_head()
+	- get_template_part( 'template-parts/favicons' );
+
+| <body <?php body_class() ?>>
+header#header(role="banner")
+	.container-fluid
+		.row.mobile-reorder
+			.col-4.logo-container.mobile__order-2
+				a#header_logo(href!="<?php echo site_url(); ?>", title!="<?php wp_title(); ?>")
+					- print_svg_ico('svg/logo')
+
+			.col-4.text-center.menu-container.mobile__order-1
+				nav#navigation(role='navigation')
+
+					input.toggler(type="checkbox" aria-label="Menu" aria-controls="navigation" aria-expanded="true/false")
+					.hamburger.hamburger--stand
+						span.hamburger-box
+							span.hamburger-inner
+					#menu-container
+						.container-fluid
+							.col-12
+								- wp_nav_menu(['theme_location' => 'primary']);
+
+			.col-4.text-right.search-container
+				button.search-icon(type="button" aria-label="Pesquisar" aria-controls="search_form" aria-expanded="true/false")
+					- print_svg_ico('svg/ui/search')
+					| <svg xmlns="http://www.w3.org/2000/svg" class="close_ico" version="1" viewBox="5 5 14 14"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+				#search_form
+					.container-fluid
+						.row
+							.col-12
+								- get_search_form();
+
+								.search-preview

@@ -1,0 +1,27 @@
+-
+	/**
+	* Footer block
+	*
+	* @author   Tinpix Digital
+	* @version  1.0.0
+	* @package  pinguim
+	*/
+
+footer(role="contentinfo")
+
+	.container-fluid
+		.row
+			.col-12
+				div.pre-footer
+					- wp_nav_menu(['theme_location' => 'pre_footer']);
+				div.copyright
+					p
+						| © 2019-2020 Pinguim - Todos os direitos reservados. Site by 
+						a(href="https://www.tinpix.com" target="_blank" title="Tinpix Digital")
+							- print_svg_ico('svg/tinpix')
+							
+- wp_footer();
+- get_template_part( 'template-parts/analytics' );
+
+| </body>
+| </html>
