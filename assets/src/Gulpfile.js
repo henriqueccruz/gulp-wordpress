@@ -3,11 +3,15 @@
 /**
  * Asset paths.
  */
-
 var paths = {
+	jade: {
+		input: 'jade/**/*.jade',
+		ignore: '!./jade/**/_*.jade',
+		output: '../../'
+	},
 	scripts: {
 		input: 'js/**/*.js',
-		polyfills: '.polyfill.js',
+		ignore: '!./js/**/_*.js',
 		output: '../js/'
 	},
 	styles: {
@@ -33,41 +37,79 @@ var paths = {
 };
 
 // General
-const {gulp, src, dest, watch, series, parallel} = require('gulp');
-const rename = require('gulp-rename');
-const autoprefixer = require('gulp-autoprefixer');
-const uglify = require('gulp-uglify');
+const { gulp, src, dest, watch, series, parallel } = require('gulp');
+const plumber		= require('gulp-plumber');
+const rename 		= require('gulp-rename');
+const autoprefixer 	= require('gulp-autoprefixer');
+const uglify 		= require('gulp-uglify');
+const args			= require('yargs').argv;
+const isRelease 	= args.release || false;
+
+// Pug
+const jade = require('gulp-jade-php');
 
 // Scripts
 const babel = require('gulp-babel');
-const concat = require('gulp-concat');
+const include = require('gulp-include')
 
 // Styles
 const sass = require('gulp-sass');
-const scsslint = require('gulp-scss-lint');
+//const scsslint = require('gulp-scss-lint');
 const cleancss = require('gulp-clean-css');
 
 // Images
-var imagemin = require('gulp-imagemin');
+const imagemin = require('gulp-imagemin');
 
 // SVGs
-var svgmin = require('gulp-svgmin');
+const svgmin = require('gulp-svgmin');
 
 /**
- * Task for SCSS Lint
+ * Task for building the HTML/PHPs
  */
-var csslint = function (done) {
-	return src(paths.styles.input)
-			.pipe(scsslint());
+const buildTemplates = function (done) {
+	return src([paths.jade.input, paths.jade.ignore])
+			.pipe(plumber())
+			.pipe( jade({
+				'pretty': (!isRelease) ? true : false,
+				'locals': {
+					'echo': function(str) {
+						return "<?php echo " + str + " ?>"
+					},
+					'image': function(src) {
+						return ("<?php echo get_template_directory_uri() ?>/assets/images/" + src);
+					},
+					'background': function(src, fromWP) {
+						var url = "/assets/images/";
+						url += src;
+						if (fromWP) {
+							return ("background-image: url('<?php echo " + src + "?>')");
+						} else {
+							return ("background-image: url('<?php echo get_template_directory_uri() . \"" + url + "\" ?>')");
+						}
+					},
+					'css': function(value) {
+						return ("<?php echo get_template_directory_uri() ?>/assets/css/" + value);
+					},
+					'js': function(value) {
+						return ("<?php echo get_template_directory_uri() ?>/assets/js/" + value);
+					},
+					'assets': function(src) {
+						return ("<?php echo get_template_directory_uri() ?>/assets/" + src);
+					}
+				}
+			}) )
+			//.pipe(rename({ extname: '.php' }))
+			.pipe(dest(paths.jade.output))
 }
 
 /**
  * Task for styles.
  */
-var css = function (done) {
+const css = function (done) {
 	return src(paths.styles.input)
+    		.pipe(plumber())
+			//.pipe(scsslint({ 'reporterOutputFormat': 'Checkstyle' }))
 			.pipe(sass().on('error', sass.logError))
-			.pipe(scsslint({ 'reporterOutputFormat': 'Checkstyle' }))
 			.pipe(autoprefixer({ cascade : false }))
 			.pipe(cleancss())
 			.pipe(rename({ suffix: '.min' }))
@@ -77,21 +119,31 @@ var css = function (done) {
 /**
  * Task for scripts.
  */
-
-var images = function (done) {
+const images = function (done) {
 	return src( [ paths.images.input ] )
+    	.pipe(plumber())
 		.pipe( imagemin( { optimizationLevel: 3, progressive: true, interlaced: true } ) )
 		.pipe( dest( paths.images.output ) );
 }
 
-var svg = function (done) {
-    return src( [paths.svgs.input ])
+/**
+ * Task for SVGs.
+ */
+const svg = function (done) {
+	return src( [ paths.svgs.input ])
+		.pipe(plumber())
         .pipe(svgmin())
         .pipe( dest(paths.svgs.output) );
 }
 
-var js = function (done) {
-    return src(paths.scripts.input)
+/**
+ * Task for JS and libs.
+ */
+const js = function (done) {
+    return src( [ paths.scripts.input, paths.scripts.ignore ] )
+		.pipe(plumber())
+		.pipe(include())
+		  .on('error', console.log)
         .pipe(babel({
             presets : ['es2015']
         }))
@@ -105,25 +157,26 @@ var js = function (done) {
  * 
  * Fonts are copied over to `assets/fonts/`
  */
-
-var fonts = function (done) {
+const fonts = function (done) {
 	return src( [ paths.fonts.input ] )
+		.pipe(plumber())
 		.pipe( dest( paths.fonts.output ) );
 }
 
 /**
  * Task for includes and simple copies
  */
-
-var copy = function (done) {
+const copy = function (done) {
 	// Copy static files
 	return src(paths.copy.input)
-	.pipe( dest(paths.copy.output) );
+		.pipe(plumber())
+		.pipe( dest(paths.copy.output) );
 }
 
 // Watch for changes
-var watchSource = function (done) {
+const watchSource = function (done) {
 
+	watch(paths.jade.input, buildTemplates);
 	watch(paths.images.input, images);
 	watch(paths.svgs.input, svg);
 	watch(paths.fonts.input, fonts);
@@ -137,6 +190,7 @@ var watchSource = function (done) {
 
 exports.default = series(
 	parallel(
+		buildTemplates,
 		images,
 		svg,
 		fonts,
