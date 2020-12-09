@@ -1,0 +1,9 @@
+@mixin counter-shadow($str) {
+	text-shadow: 
+		1px -1px 0 $str,
+		1px 0px 0 $str,
+		1px 1px 0 $str,
+		-1px -1px 0 $str,
+		-1px 0px 0 $str,
+		-1px 1px 0 $str;
+}

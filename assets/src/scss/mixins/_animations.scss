@@ -1,0 +1,53 @@
+@mixin fade-in-left($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: fadeInLeft;
+	animation-fill-mode: both;
+	animation-play-state: paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.58,1);
+    animation-delay: $delay;
+}
+
+@mixin fade-in-right($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: fadeInRight;
+	animation-fill-mode: both;
+	animation-play-state: $paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.58,1);
+    animation-delay: $delay;
+}
+
+@mixin fade-in-center($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: fadeInCenter;
+	animation-fill-mode: both;
+	animation-play-state: $paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.58,1);
+    animation-delay: $delay;
+}
+
+@mixin zoom-in-center($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: zoomInCenter;
+	animation-fill-mode: both;
+	animation-play-state: $paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.58,1);
+    animation-delay: $delay;
+}
+
+@mixin fade-in-top($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: fadeInTop;
+	animation-fill-mode: both;
+	animation-play-state: $paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.58,1);
+    animation-delay: $delay;
+}
+
+@mixin fade-in-bottom($delay: 1s, $duration: 1s, $paused: paused) {
+    animation-name: fadeInBottom;
+	animation-fill-mode: both;
+	animation-play-state: $paused;
+	animation-duration: $duration;
+	animation-timing-function: cubic-bezier(0,0,0.25,1);
+    animation-delay: $delay;
+}

@@ -1,0 +1,29 @@
+// --------------------------------------------------
+// vars
+
+@import "../partials/variables";
+
+
+// --------------------------------------------------
+// mixins
+
+@import "../mixins/fonts";
+@import "../mixins/images";
+@import "../mixins/helpers";
+@import "../mixins/components";
+@import "../mixins/animations";
+
+// --------------------------------------------------
+// Bootstrap partials
+
+@import "../../node_modules/bootstrap-scss/functions";
+@import "../../node_modules/bootstrap-scss/variables";
+@import "../../node_modules/bootstrap-scss/mixins";
+
+// --------------------------------------------------
+// Components
+@import "../components/loaders/loaders";
+
+// --------------------------------------------------
+// Level variables
+$p-base: '../../images/';
